@@ -104,11 +104,11 @@ const CarouselBanner = () => {
           <br />
           <p>Preparamos jovens de alto potencial em comunidades de baixa renda para uma carreira em tecnologia.</p>
 
-          {/* Wallet: <input className={styles.input} type='text' value={address} onChange={(evt) => setAddress(evt.target.value)} />
+          Wallet: <input className={styles.input} type='text' value={address} onChange={(evt) => setAddress(evt.target.value)} />
           <br />
           To: <input className={styles.input} type='text' value={to} onChange={(evt) => setTo(evt.target.value)} />
           <br />
-          Quantity: <input className={styles.input} type='text' value={quantity} onChange={(evt) => setQuantity(evt.target.value)} /> */}
+          Quantity: <input className={styles.input} type='text' value={quantity} onChange={(evt) => setQuantity(evt.target.value)} />
           <button className={styles.btn} onClick={() => donate()}>Doe</button>
           <br />
           <button className={styles.btn} onClick={getBalanceClick}>Get Balance</button>
