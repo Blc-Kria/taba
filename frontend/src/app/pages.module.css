@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5%;
+}
+
+@media screen and (max-width: 767px) {
+    .container{
+        display: grid;
+        gap: 20px;
+        justify-content: center;
+    }
+}

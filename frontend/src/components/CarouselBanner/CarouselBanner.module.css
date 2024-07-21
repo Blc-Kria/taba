@@ -76,6 +76,32 @@
   
   .input{
     background-color: transparent;
-    border: 2px solid #000;
-    border-radius: 4px;
+    border: 2px solid white;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    width: 50%;
+  }
+
+  @media screen and (max-width: 767px) {
+
+    .slide{
+      flex-direction: column;
+    }
+    .textContainer{
+      padding: 0;
+    }
+    .textContainer h2 {
+      display: none;
+    }
+    .textContainer p {
+      text-align: center;
+      font-size: 1rem;
+    }
+    .btn{
+      width: 100%;
+    }
+    .input{
+      width: 100%;
+    }
   }

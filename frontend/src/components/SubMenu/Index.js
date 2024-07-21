@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const SubMenu = () => {
@@ -11,8 +12,8 @@ const SubMenu = () => {
       </p>
       <br />
       <button
-      className="bg-white hover:bg-white text-black font-bold py-2 px-4 rounded-full w-32"
-    >About Us</button>
+      className="bg-white hover:bg-white text-black font-bold py-2 px-4 rounded-full w-32">
+        <Link href="/about">About Us</Link></button>
     </div>
   );
 };

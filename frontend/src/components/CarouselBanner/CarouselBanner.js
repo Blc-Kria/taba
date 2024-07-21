@@ -14,59 +14,62 @@ const CarouselBanner = () => {
   const [quantity, setQuantity] = useState("");
   const [message, setMessage] = useState("");
   const [platformBalance, setPlatformBalance] = useState(0.0);
+  const [donationValue, setDonationValue] = useState(0.00);
 
-  const PROJECT_WALLET = "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2" // endereço da carteira que recebe a doação, pode ser trocado por um select que vai pegar os endereços do banco e exibir uma lista de endereços para o usuário que vai doar poder escolher para quem doará
-  const DONATION_AMOUNT = "0.1" // valor da doação
-  const PLATFORM_WALLET = "0x04EdbfB6D677605aAD0962e62eBBE0d95c84101e" //ENDEREÇO DA PLATAFORMA 0x0b82B600b20868093420BB7623e2D35Fb67D9844
-  
+  const PROJECT_WALLET = "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2"; // endereço da carteira que recebe a doação, pode ser trocado por um select que vai pegar os endereços do banco e exibir uma lista de endereços para o usuário que vai doar poder escolher para quem doará
+  const PLATFORM_WALLET = "0x04EdbfB6D677605aAD0962e62eBBE0d95c84101e"; //ENDEREÇO DA PLATAFORMA 0x0b82B600b20868093420BB7623e2D35Fb67D9844
+
+  useEffect(() => {
+    getPlatformBalance();
+  }, []);
+
   function getBalanceClick() {
     getBalance(PROJECT_WALLET)
       .then(balance => setMessage(balance))
-      .catch(err => setMessage(err.message))
+      .catch(err => setMessage(err.message));
   }
 
   function transferClick() {
-    console.log("TransferClick")
-    transfer(address, //de - from
-      to, //para - to
-      quantity) //valor - quantity
+    transfer(address, to, quantity)
       .then(tx => setMessage(tx))
-      .catch(err => setMessage(err.message))
+      .catch(err => setMessage(err.message));
   }
 
   async function donate() {
     setMessage("Enviando transação...");
+
+    console.log("Donation Value: ", donationValue)
     try {
       const provider = new BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-        
-        const contract = new Contract(
-            contractData.address,
-            contractData.abi,
-            signer
-        );
+      
+      const contract = new Contract(
+        contractData.address,
+        contractData.abi,
+        signer
+      );
 
-        //Executar a transação de doação.
-        const tx = await contract.donate(
-            PROJECT_WALLET, // pra quem vai a doação
-            false, // se é social ou não
-            {
-                value: parseEther(DONATION_AMOUNT),
-                gasLimit: 3000000
-            }
-        );
+      //Executar a transação de doação.
+      const tx = await contract.donate(
+        PROJECT_WALLET, // pra quem vai a doação
+        false, // se é social ou não
+        {
+          value: parseEther(donationValue.toString()), // usar o estado donationValue
+          gasLimit: 3000000
+        }
+      );
 
-        setMessage("Transação enviada, aguardando confirmação...");
-        await tx.wait();
-        setMessage("Doação concluída com sucesso!");
+      setMessage("Transação enviada, aguardando confirmação...");
+      await tx.wait();
+      setMessage("Doação concluída com sucesso!");
+      setDonationValue(0.00)
 
-        console.log(tx);
+      console.log(tx);
     } catch (error) {
-        console.error("Falha ao fazer a doação:", error);
-        setMessage(`Erro na doação, verifique o console.`);
+      console.error("Falha ao fazer a doação:", error);
+      setMessage("Erro na doação, verifique o console.");
     }
-}
-
+  }
 
   const getPlatformBalance = async () => {
     const provider = new BrowserProvider(window.ethereum);
@@ -75,10 +78,6 @@ const CarouselBanner = () => {
     balance = parseFloat(balance).toFixed(2);
     setPlatformBalance(balance);
   }
-
-  useEffect(() => {
-    getPlatformBalance();
-  }, []);
 
   return (
     <Carousel
@@ -94,27 +93,30 @@ const CarouselBanner = () => {
       <div className={styles.slide}>
         <img src="/images/plataforma-logo.jpg" alt="Slide 1" className={styles.image} />
         <div className={styles.textContainer}>
-          {/* SALDO DA PLATAFORMA, TÁ MOCKADO NO CENTRO DA TELA PORQUE EU SOU CEGO (leia gritando) */}
-          <h1 style={{position: 'absolute', top: '50%', left: '50%', color: 'white'}}>
-            {
-              platformBalance
-            }
-          </h1>
+          {/* <h1 style={{position: 'absolute', top: '50%', left: '50%', color: 'white'}}>
+            {platformBalance}
+          </h1> */}
           <h2>Plataforma Impact</h2>
           <br />
           <p>Preparamos jovens de alto potencial em comunidades de baixa renda para uma carreira em tecnologia.</p>
-
-          Wallet: <input className={styles.input} type='text' value={address} onChange={(evt) => setAddress(evt.target.value)} />
           <br />
-          To: <input className={styles.input} type='text' value={to} onChange={(evt) => setTo(evt.target.value)} />
+          <p>Valor a ser doado: </p>
+          <input
+            className={styles.input}
+            type='number'
+            step={0.10}
+            value={donationValue}
+            onChange={(evt) => {
+              setQuantity(evt.target.value);
+              setDonationValue(parseFloat(evt.target.value)); // Atualiza o valor da doação como ponto flutuante
+            }}
+          />
+          <button className={styles.btn} onClick={donate}>Confirma</button>
           <br />
-          Quantity: <input className={styles.input} type='text' value={quantity} onChange={(evt) => setQuantity(evt.target.value)} />
-          <button className={styles.btn} onClick={() => donate()}>Doe</button>
-          <br />
-          <button className={styles.btn} onClick={getBalanceClick}>Get Balance</button>
+          {/* <button className={styles.btn} onClick={getBalanceClick}>Get Balance</button>
           <br />
           <button className={styles.btn} onClick={transferClick}>Transfer</button>
-          <br />
+          <br /> */}
           <span style={{color: 'white'}}>
             {message}
           </span>
