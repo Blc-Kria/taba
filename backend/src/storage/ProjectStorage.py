@@ -34,6 +34,7 @@ class ProjectStorage:
                 bio TEXT,
                 project_type BOOLEAN NOT NULL,
                 description TEXT,
+                amount_collected float, 
                 created_at TIMESTAMP NOT NULL,
                 updated_at TIMESTAMP NOT NULL
             )
@@ -44,9 +45,9 @@ class ProjectStorage:
         with sqlite3.connect(self.db_name, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
             cursor = conn.cursor()
             cursor.execute("""
-            INSERT INTO projects (name, icon, banner, wallet, bio, project_type, description, created_at, updated_at)
+            INSERT INTO projects (name, icon, banner, wallet, bio, project_type, description, amount_collected, created_at, updated_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """, (project.name, project.icon, project.banner, project.wallet, project.bio, project.project_type, project.description, project.created_at, project.updated_at))
+            """, (project.name, project.icon, project.banner, project.wallet, project.bio, project.project_type, project.description, project.amount_collected, project.created_at, project.updated_at))
             conn.commit()
             return cursor.lastrowid
 
@@ -65,8 +66,9 @@ class ProjectStorage:
                     bio=row[5],
                     project_type=row[6],
                     description=row[7],
-                    created_at=row[8],
-                    updated_at=row[9]
+                    amount_collected=row[8],
+                    created_at=row[9],
+                    updated_at=row[10]
                 )
             return None
 
@@ -85,8 +87,9 @@ class ProjectStorage:
                     bio=row[5],
                     project_type=row[6],
                     description=row[7],
-                    created_at=row[8],
-                    updated_at=row[9]
+                    amount_collected=row[8],
+                    created_at=row[9],
+                    updated_at=row[10]
                 ) for row in rows
             ]
 

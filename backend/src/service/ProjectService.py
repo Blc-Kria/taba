@@ -31,7 +31,7 @@ class ProjectService:
             raise ValueError("Description is required")
         return True
     
-    def create_project(self, name: str, icon: str, banner: str, wallet: str, bio: str, project_type: bool, description: str) -> int:
+    def create_project(self, name: str, icon: str, banner: str, wallet: str, bio: str, project_type: bool, description: str,  amount_collected=0) -> int:
         project = ProjectModel(
             name=name,
             icon=icon,
@@ -39,7 +39,8 @@ class ProjectService:
             wallet=wallet,
             bio=bio,
             project_type=project_type,
-            description=description
+            description=description,
+            amount_collected=amount_collected
         )
         self.validate_project(project)
         return self.storage.add_project(project)
