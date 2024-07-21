@@ -1,7 +1,7 @@
 import datetime
 
 class ProjectModel:
-    def __init__(self, name: str, icon: str, banner: str, wallet: str, bio: str, project_type: bool, description: str, created_at: datetime.datetime = None, updated_at: datetime.datetime = None, id: int = None):
+    def __init__(self, name: str, icon: str, banner: str, wallet: str, bio: str, project_type: bool, description: str, created_at: datetime.datetime = None, updated_at: datetime.datetime = None, id: int = None,  amount_collected=0):
         self.id = id
         self.name = name
         self.icon = icon
@@ -12,6 +12,7 @@ class ProjectModel:
         self.description = description
         self.created_at = created_at or datetime.datetime.now()
         self.updated_at = updated_at or datetime.datetime.now()
+        self.amount_collected = amount_collected
 
     def get_wallet(self) -> str:
         return self.wallet
