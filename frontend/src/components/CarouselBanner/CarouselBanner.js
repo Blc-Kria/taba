@@ -13,8 +13,7 @@ const CarouselBanner = () => {
   const [donationValue, setDonationValue] = useState(0.00);
 
   const PROJECT_WALLET = "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2"; // endereço da carteira que recebe a doação, pode ser trocado por um select que vai pegar os endereços do banco e exibir uma lista de endereços para o usuário que vai doar poder escolher para quem doará
-  const PLATFORM_WALLET = "0x04EdbfB6D677605aAD0962e62eBBE0d95c84101e"; //ENDEREÇO DA PLATAFORMA 0x0b82B600b20868093420BB7623e2D35Fb67D9844
-
+  const PLATFORM_WALLET = "0x0b82B600b20868093420BB7623e2D35Fb67D9844";
   useEffect(() => {
     getPlatformBalance();
   }, []);
