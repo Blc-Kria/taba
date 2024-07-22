@@ -81,14 +81,14 @@ const CarouselBanner = () => {
           <br />
           <p>Preparamos jovens de alto potencial em comunidades de baixa renda para uma carreira em tecnologia.</p>
           <br />
-          <p>Valor a ser doado USD: </p>
+          <p>Valor a ser doado: </p>
           <input
             className={styles.input}
             type='number'
             step={0.10}
             value={donationValue}
             onChange={(evt) => {
-              setQuantity(evt.target.value);
+              (evt.target.value);
               setDonationValue(parseFloat(evt.target.value));
             }}
           />
