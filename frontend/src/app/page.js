@@ -5,12 +5,20 @@ import Card from '../components/Card';
 import Taba from '@/components/Taba/Taba';
 import SubMenu from '@/components/SubMenu/Index';
 import Footer from '@/components/Footer';
+import Slider from '@/components/Slider';
+import styles from './pages.module.css';
 
 export default function Home() {
   return (
     <>
       <SubMenu />
-      <CarouselBanner />
+      <br />
+      <div className={styles.container}>
+      <Slider />
+      <Slider />
+      <Slider />
+      <Slider />
+      </div>
 
       <Card description={'aloha caption'} title={'title aqui'} />
     </>

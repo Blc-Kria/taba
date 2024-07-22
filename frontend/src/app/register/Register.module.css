@@ -1,0 +1,68 @@
+/* ProjectForm.module.css */
+.formContainer {
+    max-width: 40rem;
+    margin: 2.5rem auto;
+    padding: 1.5rem;
+    background-color: transparent;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+
+  .title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #ECFEFF;
+  }
+  
+  .formGroup {
+    margin-bottom: 1rem;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #ECFEFF;
+  }
+
+  .input,
+  .textarea,
+  .select,
+  .button {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    color: #ECFEFF;
+    background-color: transparent;
+  }
+
+  .option {
+    background-color: #140f38;
+  }
+  
+  .input:focus,
+  .textarea:focus,
+  .select:focus {
+    outline: none;
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
+    color: #ECFEFF;
+    background-color: transparent;
+  }
+  
+  .button {
+    background-color: transparent;
+    color: white;
+    border-radius: 8px;
+    border: 3px solid #ECFEFF;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .button:hover {
+    background-color: #1d154d;
+  }
