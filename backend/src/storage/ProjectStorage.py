@@ -35,8 +35,8 @@ class ProjectStorage:
                 project_type BOOLEAN NOT NULL,
                 description TEXT,
                 amount_collected float, 
-                created_at TIMESTAMP NOT NULL,
-                updated_at TIMESTAMP NOT NULL
+                created_at TIMESTAMP ,
+                updated_at TIMESTAMP
             )
             """)
             conn.commit()
@@ -45,18 +45,20 @@ class ProjectStorage:
         with sqlite3.connect(self.db_name, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
             cursor = conn.cursor()
             cursor.execute("""
-            INSERT INTO projects (name, icon, banner, wallet, bio, project_type, description, amount_collected, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """, (project.name, project.icon, project.banner, project.wallet, project.bio, project.project_type, project.description, project.amount_collected, project.created_at, project.updated_at))
+            INSERT INTO projects (name, icon, banner, wallet, bio, project_type, description, amount_collected)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, (project.name, project.icon, project.banner, project.wallet, project.bio, project.project_type, project.description, project.amount_collected))
             conn.commit()
             return cursor.lastrowid
 
     def get_project_id(self, project_id: int) -> Optional[ProjectModel]:
         with sqlite3.connect(self.db_name, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM projects WHERE id = ?", (project_id,))
+            cursor.execute("SELECT id, name, icon, banner, wallet, bio, project_type, description, amount_collected FROM projects WHERE id = ?", (project_id,))
             row = cursor.fetchone()
+            print(row)
             if row:
+                
                 return ProjectModel(
                     id=row[0],
                     name=row[1],
@@ -67,44 +69,16 @@ class ProjectStorage:
                     project_type=row[6],
                     description=row[7],
                     amount_collected=row[8],
-                    created_at=row[9],
-                    updated_at=row[10]
                 )
             return None
 
-    def get_all_projects(self) -> List[ProjectModel]:
-        with sqlite3.connect(self.db_name, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM projects")
-            rows = cursor.fetchall()
-            return [
-                ProjectModel(
-                    id=row[0],
-                    name=row[1],
-                    icon=row[2],
-                    banner=row[3],
-                    wallet=row[4],
-                    bio=row[5],
-                    project_type=row[6],
-                    description=row[7],
-                    amount_collected=row[8],
-                    created_at=row[9],
-                    updated_at=row[10]
-                ) for row in rows
-            ]
-
-    def update_project(self, project: ProjectModel):
+    def update_amount_collected(self, value, project: ProjectModel):
         with sqlite3.connect(self.db_name, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
             cursor = conn.cursor()
             cursor.execute("""
             UPDATE projects
-            SET name = ?, icon = ?, banner = ?, wallet = ?, bio = ?, project_type = ?, description = ?, created_at = ?, updated_at = ?
+            SET amount_collected = ?
             WHERE id = ?
-            """, (project.name, project.icon, project.banner, project.wallet, project.bio, project.project_type, project.description, project.created_at, project.updated_at, project.id))
+            """, (value, project.id))
             conn.commit()
-
-    def delete_project(self, project_id: int):
-        with sqlite3.connect(self.db_name, detect_types=sqlite3.PARSE_DECLTYPES) as conn:
-            cursor = conn.cursor()
-            cursor.execute("DELETE FROM projects WHERE id = ?", (project_id,))
-            conn.commit()
+            
