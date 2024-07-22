@@ -8,13 +8,13 @@ const Slider = () => {
       <CardHeader className={styles.cardHeader}>
         <p className={styles.textTiny}>Projeto Social</p>
         <small className={styles.textDefault500}></small>
-        <h4 className={styles.textLarge}>Plataforma Impact</h4>
+        <h4 className={styles.textLarge}>Nébula</h4>
       </CardHeader>
       <CardBody className={styles.cardBody}>
         <Image
           alt="Card background"
           className={styles.image}
-          src="/images/plataforma-logo.jpg"
+          src="/images/nebula.jpg"
           width={270}
           height={270}
         />

@@ -75,9 +75,9 @@ const CarouselBanner = () => {
       className={styles.carousel}
     >
       <div className={styles.slide}>
-        <img src="/images/plataforma-logo.jpg" alt="Slide 1" className={styles.image} />
+        <img src="/images/nebula.jpg" alt="Slide 1" className={styles.image} />
         <div className={styles.textContainer}>
-          <h2>Plataforma Impact</h2>
+          <h2>Nébula</h2>
           <br />
           <p>Preparamos jovens de alto potencial em comunidades de baixa renda para uma carreira em tecnologia.</p>
           <br />
