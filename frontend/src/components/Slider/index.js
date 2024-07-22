@@ -6,9 +6,9 @@ const Slider = () => {
   return (
     <Card className={styles.card}>
       <CardHeader className={styles.cardHeader}>
-        <p className={styles.textTiny}>Conheça</p>
+        <p className={styles.textTiny}>Projeto Social</p>
         <small className={styles.textDefault500}></small>
-        <h4 className={styles.textLarge}>Projeto 1</h4>
+        <h4 className={styles.textLarge}>Plataforma Impact</h4>
       </CardHeader>
       <CardBody className={styles.cardBody}>
         <Image

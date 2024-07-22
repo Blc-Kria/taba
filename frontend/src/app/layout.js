@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Menu className="flex justify-end max-w-xl"/>
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

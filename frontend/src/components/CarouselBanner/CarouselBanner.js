@@ -9,11 +9,7 @@ import styles from './CarouselBanner.module.css';
 import contractData from '../../app/resources/DonationContract.json';
 
 const CarouselBanner = () => {
-  const [address, setAddress] = useState("");
-  const [to, setTo] = useState("");
-  const [quantity, setQuantity] = useState("");
   const [message, setMessage] = useState("");
-  const [platformBalance, setPlatformBalance] = useState(0.0);
   const [donationValue, setDonationValue] = useState(0.00);
 
   const PROJECT_WALLET = "0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2"; // endereço da carteira que recebe a doação, pode ser trocado por um select que vai pegar os endereços do banco e exibir uma lista de endereços para o usuário que vai doar poder escolher para quem doará
@@ -22,18 +18,6 @@ const CarouselBanner = () => {
   useEffect(() => {
     getPlatformBalance();
   }, []);
-
-  function getBalanceClick() {
-    getBalance(PROJECT_WALLET)
-      .then(balance => setMessage(balance))
-      .catch(err => setMessage(err.message));
-  }
-
-  function transferClick() {
-    transfer(address, to, quantity)
-      .then(tx => setMessage(tx))
-      .catch(err => setMessage(err.message));
-  }
 
   async function donate() {
     setMessage("Enviando transação...");
@@ -93,14 +77,11 @@ const CarouselBanner = () => {
       <div className={styles.slide}>
         <img src="/images/plataforma-logo.jpg" alt="Slide 1" className={styles.image} />
         <div className={styles.textContainer}>
-          {/* <h1 style={{position: 'absolute', top: '50%', left: '50%', color: 'white'}}>
-            {platformBalance}
-          </h1> */}
           <h2>Plataforma Impact</h2>
           <br />
           <p>Preparamos jovens de alto potencial em comunidades de baixa renda para uma carreira em tecnologia.</p>
           <br />
-          <p>Valor a ser doado: </p>
+          <p>Valor a ser doado USD: </p>
           <input
             className={styles.input}
             type='number'
@@ -108,31 +89,12 @@ const CarouselBanner = () => {
             value={donationValue}
             onChange={(evt) => {
               setQuantity(evt.target.value);
-              setDonationValue(parseFloat(evt.target.value)); // Atualiza o valor da doação como ponto flutuante
+              setDonationValue(parseFloat(evt.target.value));
             }}
           />
           <button className={styles.btn} onClick={donate}>Confirma</button>
-          <br />
-          {/* <button className={styles.btn} onClick={getBalanceClick}>Get Balance</button>
-          <br />
-          <button className={styles.btn} onClick={transferClick}>Transfer</button>
-          <br /> */}
-          <span style={{color: 'white'}}>
-            {message}
-          </span>
         </div>
       </div>
-      {/* <div className={styles.slide}>
-        <img src="/images/image2.jpg" alt="Slide 2" className={styles.image} />
-        <div className={styles.textContainer}>
-          <h2>Nebula Web3</h2>
-          <br />
-          <p>Uma organização sem fins lucrativos comprometida em criar um espaço de tecnologia/NFT mais inclusivo e acessível.</p>
-          <br />
-          <button className={styles.btn} onClick={() => getMetaMaskProvider()}>Doe</button>
-
-        </div>
-      </div> */}
     </Carousel>
   );
 };

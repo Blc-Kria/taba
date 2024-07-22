@@ -88,7 +88,7 @@ const AboutUs = () => {
           <p className={styles.nome}>
             Nilo Jr.
             <a
-              href="https://www.linkedin.com/in/guilherme-santos-denvjr/"
+              href="https://www.linkedin.com/in/eunilo/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -96,6 +96,26 @@ const AboutUs = () => {
             </a>
           </p>
           <p className={styles.bio}>Project Manager</p>
+        </div>
+        <div className={styles.colaborador}>
+          <Image
+            alt="Raphael Cordeiro"
+            className={styles.image}
+            src="/images/raphael.jpg"
+            width={146}
+            height={146}
+          />
+          <p className={styles.nome}>
+            Raphael Cordeiro
+            <a
+              href="https://www.linkedin.com/in/raph2ll/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin className={styles.icon} />
+            </a>
+          </p>
+          <p className={styles.bio}>Tech Lead</p>
         </div>
       </div>
     </section>
