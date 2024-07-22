@@ -81,7 +81,7 @@ const CarouselBanner = () => {
           <br />
           <p>Preparamos jovens de alto potencial em comunidades de baixa renda para uma carreira em tecnologia.</p>
           <br />
-          <p>Valor a ser doado: </p>
+          <p>Quantidade a ser doada (XRP) </p>
           <input
             className={styles.input}
             type='number'
