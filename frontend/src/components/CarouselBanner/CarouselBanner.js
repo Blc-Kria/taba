@@ -25,7 +25,7 @@ const CarouselBanner = () => {
     try {
       const provider = new BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
-      
+
       const contract = new Contract(
         contractData.address,
         contractData.abi,
@@ -77,9 +77,7 @@ const CarouselBanner = () => {
         <img src="/images/nebula.jpg" alt="Slide 1" className={styles.image} />
         <div className={styles.textContainer}>
           <h2>Nébula</h2>
-          <br />
           <p>Preparamos jovens de alto potencial em comunidades de baixa renda para uma carreira em tecnologia.</p>
-          <br />
           <p>Quantidade a ser doada (XRP) </p>
           <input
             className={styles.input}

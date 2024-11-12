@@ -6,6 +6,7 @@ import {
     Typography,
     Button,
 } from "@material-tailwind/react";
+import Link from 'next/link';
 
 export function CardDefault() {
     return (
@@ -27,7 +28,7 @@ export function CardDefault() {
             </CardBody>
             <CardFooter className="pt-0">
                 <Button variant="text" className="flex items-center gap-2 ml-5 mf-5 mb-5">
-                    Read More{" "}
+                    <Link href="/projects">Ler Mais</Link>{" "}
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
