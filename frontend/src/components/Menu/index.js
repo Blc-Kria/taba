@@ -29,7 +29,6 @@ const Menu = () => {
             <Link href="/register">Enviar Projetos</Link>
           </li>
         </ul>
-        {/* Sandwich Menu Button */}
         <div className="md:hidden flex items-center">
           <button
             onClick={toggleMenu}
@@ -62,7 +61,6 @@ const Menu = () => {
         </div>
 
       </nav>
-      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden w-full text-cyan-50 text-left px-12 py-4 ">
           <ul>
