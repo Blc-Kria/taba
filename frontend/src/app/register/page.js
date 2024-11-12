@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import styles from './Register.module.css';
+import Footer from '@/components/Footer';
 
 export default function ProjectForm() {
   const [formData, setFormData] = useState({
@@ -40,13 +41,13 @@ export default function ProjectForm() {
     }
 
     console.log({
-        name: formData.name,
-        icon: formData.icon,
-        banner: formData.banner,
-        wallet: formData.wallet,
-        bio: formData.bio,
-        projectType: formData.projectType,
-        attachments: formData.attachments,
+      name: formData.name,
+      icon: formData.icon,
+      banner: formData.banner,
+      wallet: formData.wallet,
+      bio: formData.bio,
+      projectType: formData.projectType,
+      attachments: formData.attachments,
     });
 
     try {
@@ -76,7 +77,7 @@ export default function ProjectForm() {
   };
 
   return (
-    <div className={styles.formContainer}>
+    <><div className={styles.formContainer}>
       <p className={styles.title}>Envie o seu projeto</p>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
@@ -87,8 +88,7 @@ export default function ProjectForm() {
             id="name"
             value={formData.name}
             onChange={handleChange}
-            className={styles.input}
-          />
+            className={styles.input} />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="icon">Ícone</label>
@@ -97,8 +97,7 @@ export default function ProjectForm() {
             name="icon"
             id="icon"
             onChange={handleChange}
-            className={`${styles.input} ${styles.inputfile}`}
-          />
+            className={`${styles.input} ${styles.inputfile}`} />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="banner">Banner</label>
@@ -107,8 +106,7 @@ export default function ProjectForm() {
             name="banner"
             id="banner"
             onChange={handleChange}
-            className={`${styles.input} ${styles.inputfile}`}
-          />
+            className={`${styles.input} ${styles.inputfile}`} />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="wallet">Wallet</label>
@@ -118,8 +116,7 @@ export default function ProjectForm() {
             id="wallet"
             value={formData.wallet}
             onChange={handleChange}
-            className={styles.input}
-          />
+            className={styles.input} />
         </div>
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="bio">Bio</label>
@@ -152,8 +149,7 @@ export default function ProjectForm() {
             id="attachments"
             multiple
             onChange={handleChange}
-            className={`${styles.input} ${styles.inputfile}`}
-          />
+            className={`${styles.input} ${styles.inputfile}`} />
         </div>
         <div className={styles.formGroup}>
           <button
@@ -164,6 +160,6 @@ export default function ProjectForm() {
           </button>
         </div>
       </form>
-    </div>
+    </div><Footer /></>
   );
 }

@@ -1,40 +1,24 @@
 import styles from "./Footer.module.css";
+import Link from 'next/link';
 import Image from "next/image";
+
 
 function Footer() {
   return (
     <footer className={styles.rodape}>
-     <div>
-        <p className={styles.subtitulo}>Criação</p>
-        <div>
-          <Image
-            className={styles.img__block}
-            src="/images/block-logo.png"
-            alt="logo Bloc.kria"
-            width={150}
-            height={200}
-          />
-        </div>  
-      </div>
-      <div>
-        <p className={styles.subtitulo}>Apoio</p>
-        <div className={styles.img__container}>
-          <Image
-            src="/images/its-logo.png"
-            alt="logo Its Cripto"
-            width={150}
-            height={200}
-          />
-          <Image
-            src="/images/nebula-logo.png"
-            alt="logo Nebula"
-            width={150}
-            height={200}
-          />
-        </div>  
-      </div>
+      <img src="/images/block-logo.png" className="img-logo" alt='logo AluraFlix' width={100} height={150}></img>
+      <p className={styles.textoFooter}>
+        <Link href="/about">Sobre Nós</Link></p>
+      <p className={styles.textoFooter}>
+        <Link href="/projects">Doe</Link></p>
+      <p className={styles.textoFooter}>
+        <Link href="/register">Envie Projetos</Link></p>
+
+
     </footer>
-  );
+  )
+
+
 }
 
 export default Footer;

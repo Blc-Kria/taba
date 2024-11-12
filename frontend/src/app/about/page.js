@@ -1,10 +1,11 @@
 import styles from "./AboutUs.module.css";
 import Image from "next/image";
 import { FaLinkedin } from "react-icons/fa";
+import Footer from '@/components/Footer';
 
 const AboutUs = () => {
   return (
-    <section className={styles.section}>
+    <><section className={styles.section}>
       <div className={styles.container}>
         <p className={styles.titulo}>Sobre Nós</p>
         <p className={styles.texto}>
@@ -23,8 +24,7 @@ const AboutUs = () => {
             className={styles.image}
             src="/images/ester.jpg"
             width={146}
-            height={146}
-          />
+            height={146} />
           <p className={styles.nome}>
             Ester Miranda
             <a
@@ -43,8 +43,7 @@ const AboutUs = () => {
             className={styles.image}
             src="/images/evandro.jpg"
             width={146}
-            height={146}
-          />
+            height={146} />
           <p className={styles.nome}>
             Evandro Ladislau
             <a
@@ -63,8 +62,7 @@ const AboutUs = () => {
             className={styles.image}
             src="/images/guilherme.jpg"
             width={146}
-            height={146}
-          />
+            height={146} />
           <p className={styles.nome}>
             Guilherme Santos
             <a
@@ -83,8 +81,7 @@ const AboutUs = () => {
             className={styles.image}
             src="/images/nilo.jpg"
             width={146}
-            height={146}
-          />
+            height={146} />
           <p className={styles.nome}>
             Nilo Jr.
             <a
@@ -103,8 +100,7 @@ const AboutUs = () => {
             className={styles.image}
             src="/images/raphael.jpg"
             width={146}
-            height={146}
-          />
+            height={146} />
           <p className={styles.nome}>
             Raphael Cordeiro
             <a
@@ -118,7 +114,7 @@ const AboutUs = () => {
           <p className={styles.bio}>Tech Lead</p>
         </div>
       </div>
-    </section>
+    </section><Footer /></>
   );
 };
 
